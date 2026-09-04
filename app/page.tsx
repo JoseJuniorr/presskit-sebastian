@@ -1,11 +1,68 @@
+'use client';
+
+import { useState, useRef } from 'react';
 import Head from 'next/head';
 
 export default function PressKit() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
-    <main>
+    <main style={{ position: 'relative' }}>
       <Head>
         <title>Sebastian e o Farol - Press Kit</title>
       </Head>
+
+      {/* Áudio de Fundo Global */}
+      <audio ref={audioRef} src="/trilha.mp3" loop />
+
+      {/* Botão Flutuante de Áudio */}
+      <button 
+        onClick={toggleAudio}
+        style={{
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          zIndex: 9999,
+          backgroundColor: 'rgba(10, 10, 12, 0.85)',
+          border: '1px solid var(--accent-magenta)',
+          color: '#fff',
+          padding: '12px 20px',
+          borderRadius: '30px',
+          cursor: 'pointer',
+          fontFamily: "'Oswald', sans-serif",
+          textTransform: 'uppercase',
+          letterSpacing: '2px',
+          fontSize: '0.85rem',
+          backdropFilter: 'blur(5px)',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          transition: '0.3s'
+        }}
+      >
+        <span style={{ 
+          width: '8px', 
+          height: '8px', 
+          backgroundColor: isPlaying ? 'var(--accent-magenta)' : '#666', 
+          borderRadius: '50%',
+          display: 'inline-block',
+          boxShadow: isPlaying ? '0 0 10px var(--accent-magenta)' : 'none'
+        }}></span>
+        {isPlaying ? 'Som: Ligado' : 'Ouvir Trilha'}
+      </button>
 
       {/* 01. CAPA HERO */}
       <section className="section" style={{ justifyContent: 'space-between', paddingTop: '15vh' }}>
@@ -140,7 +197,6 @@ export default function PressKit() {
       </section>
 
       {/* 09. AO VIVO */}
-     {/* 09. AO VIVO (COM O VÍDEO EM LOOP) */}
       <section className="section" style={{ padding: 0, minHeight: '80vh', position: 'relative', backgroundColor: '#000', overflow: 'hidden' }}>
         <video 
           src="/aovivo.mp4" 
@@ -152,7 +208,7 @@ export default function PressKit() {
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            opacity: 0.65, 
+            opacity: '0.65', 
             position: 'absolute', 
             top: 0, 
             left: 0 
