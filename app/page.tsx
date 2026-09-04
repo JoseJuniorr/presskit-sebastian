@@ -135,7 +135,7 @@ export default function PressKit() {
         <h1 style={{ fontSize: '8rem', letterSpacing: '12px', marginBottom: '30px', color: '#fff' }}>VERNIZ</h1>
         <div style={{ maxWidth: '700px' }}>
           <p style={{ color: 'var(--accent-magenta)', fontWeight: 600, fontSize: '1.5rem', marginBottom: '25px' }}>Zolpidem foi apenas o primeiro sinal.</p>
-          <p style={{ fontSize: '1.3rem' }}>O novo EP abraça a densidade. <strong>Verniz</strong> traz mais peso e afinações dropadas, explorando timbres ruidosos (com fortes flertes à densidade rítmica de bandas como Deftones) em faixas encorpadas como <em>"Corpos no Salão"</em>, além de abrir espaço para o contraponto visceral de uma nova faixa acústica.</p>
+          <p style={{ fontSize: '1.3rem' }}>Verniz aprofunda a densidade sonora da banda. O novo EP traz mais peso, equilibrando texturas ruidosas.</p>
         </div>
       </section>
 
