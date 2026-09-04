@@ -1,26 +1,114 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-dark: #0a0a0c;
+  --bg-lighter: #121215;
+  --text-main: #f0f0f2;
+  --text-muted: #888888;
+  --accent-purple: #3a0ca3;
+  --accent-magenta: #f72585;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+/* Estrutura Editorial Web */
+.section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 10vh 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  gap: 5vw;
+  align-items: center;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.col {
+  flex: 1;
+}
+
+p {
+  line-height: 1.7;
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+.highlight-text {
+  color: var(--accent-magenta);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+
+/* Imagens */
+.img-fluid {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cover-img {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  margin-top: 5vh;
+}
+
+.member-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(110%);
+}
+
+/* Responsividade (Mobile) */
+@media (max-width: 900px) {
+  .row, .row-reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+  .formation-grid {
+    grid-template-columns: 1fr;
+  }
+  h1 { font-size: 3.5rem !important; }
+  h3 { font-size: 2.5rem !important; }
+  p { font-size: 1.1rem; }
+  .section { padding: 8vh 6vw; }
 }
