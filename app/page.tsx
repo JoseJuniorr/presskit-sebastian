@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Head from 'next/head';
 
 export default function PressKit() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,9 +19,6 @@ export default function PressKit() {
 
   return (
     <main style={{ position: 'relative' }}>
-      <Head>
-        <title>Sebastian e o Farol - Press Kit</title>
-      </Head>
 
       {/* Áudio de Fundo Global */}
       <audio ref={audioRef} src="/trilha.mp3" loop />
